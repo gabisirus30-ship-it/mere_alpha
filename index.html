@@ -1,63 +1,80 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Dossier Classifié - Mère Alpha</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Roboto", sans-serif;
-            background-color: #0d0d0d;
-            color: #e6e6e6;
-        }
-
-        header {
-            background: #660000;
-            padding: 20px;
-            text-align: center;
-            color: white;
-            border-bottom: 4px solid #990000;
-        }
-
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-        }
-
-        h2 {
-            color: #ff5555;
-            margin-top: 40px;
-            border-bottom: 2px solid #ff5555;
-            padding-bottom: 5px;
-        }
-
-        .warning {
-            background: #330000;
-            padding: 15px;
-            border-left: 6px solid #ff0000;
-            margin: 20px 0;
-        }
-
-        .card {
-            background: #1a1a1a;
-            padding: 20px;
-            border: 1px solid #333;
-            margin-bottom: 20px;
-            border-radius: 8px;
-        }
-
-        .footer {
-            text-align: center;
-            color: #777;
-            margin-top: 40px;
-            padding: 20px;
-            border-top: 1px solid #333;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier Classifié - Mère Alpha</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    background-color: #0d0d0d;
+    color: #e6e6e6;
+    overflow-x: hidden;
+}
+header {
+    background: #660000;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    border-bottom: 4px solid #990000;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+h2 {
+    color: #ff5555;
+    margin-top: 40px;
+    border-bottom: 2px solid #ff5555;
+    padding-bottom: 5px;
+}
+.card {
+    background: #1a1a1a;
+    padding: 20px;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+li, span {
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+}
+li:hover, span:hover {
+    transform: scale(1.05);
+    color: #00ff00;
+}
+.hidden {
+    display: none;
+    color: #ff6347;
+    margin-left: 20px;
+    font-style: italic;
+}
+.missile, .aspirateur {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: none;
+}
+.missile { background-color: red; }
+.aspirateur { background-color: cyan; }
+.footer {
+    text-align: center;
+    color: #777;
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid #333;
+}
+</style>
 </head>
-
 <body>
 
 <header>
@@ -69,86 +86,154 @@
 
     <div class="warning">
         <strong>ATTENTION :</strong> Ce dossier appartient au Ministère International des Phénomènes Catastrophiques. 
-        Toute tentative de reproduction, diffusion ou simple lecture publique est formellement interdite.
+        Toute tentative de reproduction ou lecture publique est formellement interdite.
     </div>
 
     <h2>1. Identité & Description</h2>
     <div class="card">
-        <p><strong>Nom de code :</strong> Mère Alpha</p>
-        <p><strong>Nom civil :</strong> Mme Martinet</p>
-        <p><strong>Espèce :</strong> Indéterminée (hybride humanoïde / anomalie énergétique)</p>
-        <p><strong>Taille :</strong> Variable selon l'intensité Nutella</p>
-        <p><strong>Particularités physiques :</strong></p>
+        <p><strong>Nom de code :</strong> <span onclick="toggleDetail(this,'Mère Alpha est reconnue pour sa puissance catastrophique, capable de modifier les lois physiques à volonté.')">Mère Alpha</span></p>
+        <div class="hidden"></div>
+        <p><strong>Nom civil :</strong> <span onclick="toggleDetail(this,'Mme Martinet, son identité civile, est complètement normale en apparence, mais cache une énergie surnaturelle colossale.')">Mme Martinet</span></p>
+        <div class="hidden"></div>
+        <p><strong>Espèce :</strong> <span onclick="toggleDetail(this,'Indéterminée, mélange de traits humains et d’anomalies énergétiques rares, son corps est une véritable usine de phénomènes absurdes.')">Indéterminée</span></p>
+        <div class="hidden"></div>
+        <p><strong>Taille :</strong> <span onclick="toggleDetail(this,'Variable selon l’intensité Nutella ingérée, peut passer de normale à gigantesque en quelques secondes.')">Variable</span></p>
+        <div class="hidden"></div>
+    </div>
+
+    <h2>2. Capacités Absurdes</h2>
+    <div class="card">
         <ul>
-            <li>Clignotants intégrés à l’arrière pour signaler ses virages</li>
-            <li>Affiches “ATTENTION ANGLE MORT” collées sur elle-même</li>
-            <li>Peau hérissée de micro-piques style cactus</li>
-            <li>Amortisseurs d’avion dans les jambes pour encaisser ses propres pas</li>
-            <li>Airbags nasaux et abdominaux pour chute imprévue</li>
+            <li onclick="toggleDetail(this,'Elle possède 12 moteurs V12 dans son postérieur, activables par une clé dans la narine droite et pompage sur le sein droit.')">12 moteurs V12 internes</li>
+            <div class="hidden"></div>
+
+            <li onclick="launchAspirateur(this)">Aspirateur géant sortant de son cul (pouce droit)</li>
+            <div id="aspirateurDesc" class="hidden">
+                L’aspirateur sort de son postérieur et peut aspirer tout sur son passage : tables, chaises, élèves, voire objets lourds. 
+                Il est contrôlé par une petite manette attachée à son pouce droit.
+            </div>
+
+            <li onclick="launchMissile(this)">Missile “SATAN-15” sortant de son cul (pouce gauche)</li>
+            <div id="missileDesc" class="hidden">
+                Chaque missile émerge de son postérieur lorsqu’elle appuie sur son pouce gauche. 
+                Capable de raser des bâtiments entiers et de provoquer des mini-tremblements à l’impact.
+            </div>
+
+            <li onclick="toggleDetail(this,'Téléphone et micro intégrés à son corps pour communication instantanée avec le monde entier.')">Téléphone et micro intégrés</li>
+            <div class="hidden"></div>
+
+            <li onclick="toggleDetail(this,'Capacité pyro-nutellique : ingestion de piments trempés dans Nutella → souffle de feu directionnel et titanesque.')">Feu de piment</li>
+            <div class="hidden"></div>
         </ul>
     </div>
 
-    <h2>2. Capacités Anormales</h2>
+    <h2>3. Historique LGM</h2>
     <div class="card">
         <ul>
-            <li>12 moteurs V12 internes surnommés “les Douze Bourrins”</li>
-            <li>Activation via protocole 12-12 :</li>
-            <ul>
-                <li>Insertion d’une clé dans la narine droite</li>
-                <li>Rotation ×3</li>
-                <li>Pompage d’énergie sur le sein droit (source encore inconnue)</li>
-                <li>Démarrage manuel : langue-mode-tondeuse ou manivelle buccale</li>
-            </ul>
-            <li>Aspirateur titanesque déployé depuis la zone postérieure</li>
-            <li>Missile tactique “SATAN-15 Miniature” éjecté en cas d’urgence</li>
-            <li>Gestion d'appels téléphoniques grâce à un téléphone intégré (sortie dorsale)</li>
-            <li>Capacité pyro-nutellique : ingestion de piments trempés dans Nutella → souffle de feu</li>
+            <li onclick="toggleDetail(this,'À son arrivée, elle écrase tout sur son passage et provoque des tremblements dans les couloirs.')">Écrase tout au LGM</li>
+            <div class="hidden"></div>
+            <li onclick="toggleDetail(this,'Tourniquets et barrières sont inutiles contre sa force colossale.')">Tourniquets inutiles</li>
+            <div class="hidden"></div>
+            <li onclick="toggleDetail(this,'Elle tourne en toupie dans les classes, écrasant tables, chaises et élèves.')">Tourne en toupie</li>
+            <div class="hidden"></div>
+            <li onclick="toggleDetail(this,'Elle détecte toutes les réserves de Nutella grâce à son odorat surdéveloppé.')">Traque Nutella</li>
+            <div class="hidden"></div>
         </ul>
     </div>
 
-    <h2>3. Équipement Habituel</h2>
+    <h2>4. Anecdotes Folles</h2>
     <div class="card">
         <ul>
-            <li>Aspirateur géant (modèle catastrophique)</li>
-            <li>Manivelle antique de véhicule 1920</li>
-            <li>Ventouses auditives professionnelles</li>
-            <li>Brosse à toilettes utilisée comme brosse à dents</li>
-            <li>Porte-manteau converti en peigne XXL</li>
+            <li onclick="toggleDetail(this,'Elle a écrasé son chien par accident en s’asseyant sur un fauteuil.')">Écrasé son chien</li>
+            <div class="hidden"></div>
+            <li onclick="toggleDetail(this,'Elle a porté des crocodiles comme chaussons, provoquant leur mort instantanée.')">Crocodiles morts</li>
+            <div class="hidden"></div>
+            <li onclick="toggleDetail(this,'Consommation massive de Skittles → excréments multicolores avec grumeaux.')">Skittles multicolores</li>
+            <div class="hidden"></div>
+            <li onclick="toggleDetail(this,'Capture du Père Noël et Mère Noël pour produire du Nutella artisanal.')">Père et Mère Noël capturés</li>
+            <div class="hidden"></div>
         </ul>
     </div>
 
-    <h2>4. Historique Légendaire</h2>
     <div class="card">
-        <p>Selon des témoignages non confirmés :</p>
-        <ul>
-            <li>Elle aurait écrasé son chien… en s’assoyant par accident.</li>
-            <li>Elle aurait porté deux crocodiles vivants en guise de chaussons (décès immédiat des reptiles).</li>
-            <li>Elle mangerait suffisamment de Skittles pour produire des résidus… multicolores.</li>
-            <li>Elle aurait capturé le Père Noël et la Mère Noël pour alimenter sa chaîne de fabrication de Nutella artisanal.</li>
-        </ul>
-    </div>
-
-    <h2>5. Risques & Menaces</h2>
-    <div class="card">
-        <p><strong>Niveau de danger :</strong> MAXIMAL</p>
-        <p>Toute tentative d’approche doit être précédée de l’activation du Protocole 404-NUTELLA.</p>
-        <p>Ne jamais :</p>
-        <ul>
-            <li>la surprendre,</li>
-            <li>lui cacher du Nutella,</li>
-            <li>l’empêcher de faire un virage en oubliant ses clignotants,</li>
-            <li>se tenir dans ses angles morts (périmètre estimé : 40 mètres).</li>
-        </ul>
+        <h2>Actions Interactives</h2>
+        <button onclick="launchMissile(this)">Appuie pouce gauche - Missile</button>
+        <button onclick="launchAspirateur(this)">Appuie pouce droit - Aspirateur</button>
     </div>
 
 </div>
+
+<div id="missileAnim" class="missile"></div>
+<div id="aspirateurAnim" class="aspirateur"></div>
+
+<audio id="petSound" src="https://www.soundjay.com/human/fart-01.mp3"></audio>
 
 <div class="footer">
     Document classifié - Ministère International des Anomalies Humaines ©
 </div>
 
+<script>
+function toggleDetail(el, text) {
+    playPet();
+    let nextDiv = el.nextElementSibling;
+    if (!nextDiv) return;
+    nextDiv.textContent = text;
+    nextDiv.style.display = nextDiv.style.display === 'block' ? 'none' : 'block';
+}
+
+function playPet() {
+    const pet = document.getElementById('petSound');
+    pet.currentTime = 0;
+    pet.play().catch(err => console.log(err));
+}
+
+function launchMissile(button) {
+    playPet();
+    document.getElementById('missileDesc').style.display = 'block';
+    const missile = document.getElementById('missileAnim');
+    missile.style.display = 'block';
+    missile.style.left = button.offsetLeft + 'px';
+    missile.style.top = button.offsetTop + 'px';
+    let pos = button.offsetLeft;
+    const interval = setInterval(()=>{
+        if(pos > window.innerWidth){
+            missile.style.display = 'none';
+            clearInterval(interval);
+        } else {
+            pos += 20;
+            missile.style.left = pos+'px';
+        }
+    },30);
+}
+
+function launchAspirateur(button) {
+    playPet();
+    document.getElementById('aspirateurDesc').style.display = 'block';
+    const aspirateur = document.getElementById('aspirateurAnim');
+    aspirateur.style.display = 'block';
+    aspirateur.style.left = button.offsetLeft+'px';
+    aspirateur.style.top = button.offsetTop+'px';
+    let pos = button.offsetLeft;
+    const interval = setInterval(()=>{
+        if(pos > window.innerWidth){
+            aspirateur.style.display = 'none';
+            clearInterval(interval);
+        } else {
+            pos += 25;
+            aspirateur.style.left = pos+'px';
+        }
+    },30);
+}
+
+// Pet sonore sur tous les clics
+document.querySelectorAll('li, button, span').forEach(el=>{
+    el.addEventListener('click', playPet);
+});
+</script>
+
 </body>
 </html>
+
 
 
         
